@@ -1,0 +1,6 @@
+name: Internet reception
+description: 'Sent to the site administrator.'
+type: module
+core: 8.x
+version: 1.0
+package: Custom

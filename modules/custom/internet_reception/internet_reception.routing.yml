@@ -1,11 +1,11 @@
-helloworld.hellopage:
+internet-reception.hellopage:
 
   path: '/internet-reception'
 
   defaults:
 
-    _controller: '\Drupal\internet_reception\Controller\InternetReceptionController::helloWorld'
+    _form: '\Drupal\internet_reception\Form\InternetReceptionForm'
 
   requirements:
 
-    _permission: 'view content'
+    _permission: 'access content'

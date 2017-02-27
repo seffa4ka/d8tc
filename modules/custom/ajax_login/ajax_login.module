@@ -1,0 +1,5 @@
+<?php
+
+function login_ajax_form_user_login_alter(&$form, &$form_state, $form_id) {
+    drupal_set_message($this->t('1'));
+}

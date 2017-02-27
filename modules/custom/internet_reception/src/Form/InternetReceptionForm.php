@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\helloworld\Form\InternetReceptionForm.
+ * Contains \Drupal\internet_reception\Form\InternetReceptionForm.
  */
 
 namespace Drupal\internet_reception\Form;

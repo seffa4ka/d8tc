@@ -1,0 +1,21 @@
+test_form.multistep_one:
+  path: '/test-form-one'
+  defaults:
+    _form: '\Drupal\test_form\Form\Multistep\MultistepOneForm'
+    _title: 'First form'
+  requirements:
+    _permission: 'access content'
+test_form.multistep_two:
+  path: '/test-form-two'
+  defaults:
+    _form: '\Drupal\test_form\Form\Multistep\MultistepTwoForm'
+    _title: 'Second form'
+  requirements:
+    _permission: 'access content'
+test_form.multistep_three:
+  path: '/test-form-three'
+  defaults:
+    _form: '\Drupal\test_form\Form\Multistep\MultistepThreeForm'
+    _title: 'Last form'
+  requirements:
+    _permission: 'access content'

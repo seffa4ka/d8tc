@@ -101,10 +101,11 @@ class InternetReceptionForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-$newMail = \Drupal::service('plugin.manager.mail');
+    $newMail = \Drupal::service('plugin.manager.mail');
     $params['name'] = $form_state->getValue('name');
     $userEmail = $form_state->getValue('email');
-    $newMail->mail('internet_reception', 'registerMail', $userEmail, 'en', $params, $reply = NULL, $send = TRUE);
+    $langcode = \Drupal::currentUser()->getPreferredLangcode();
+    $newMail->mail('internet_reception', 'registerMail', $userEmail, $langcode, $params, NULL, TRUE);
     
     drupal_set_message($this->t('Thank you @name!', array(
       '@name' => $form_state->getValue('name')

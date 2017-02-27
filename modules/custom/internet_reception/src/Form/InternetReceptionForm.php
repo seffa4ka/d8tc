@@ -61,6 +61,10 @@ class InternetReceptionForm extends FormBase {
       '#required' => TRUE,
     );
 
+    $form['captcha'] = array(
+      '#type' => 'captcha',
+    );
+
     $form['actions']['#type'] = 'actions';
 
     $form['actions']['submit'] = array(

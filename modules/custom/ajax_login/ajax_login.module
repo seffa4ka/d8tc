@@ -12,7 +12,29 @@
  * Implements form_FORM_ID_alter().
  */
 function ajax_login_form_user_login_form_alter(&$form, &$form_state, $form_id) {
+/*
+  $form = array();
 
+  $form['login'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Login'),
+    '#required' => TRUE,
+  );
+
+  $form['password'] = array(
+    '#type' => 'password',
+    '#title' => t('Password'),
+    '#required' => TRUE,
+  );
+
+  $form['actions']['#type'] = 'actions';
+
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('mySubmit'),
+    '#button_type' => 'primary',
+  );
+*/
   $form['actions']['submit']['#ajax'] = array(
     'callback' => 'ajax_login_form_user_login_callback',
     'wrapper' => 'user-login-form',
@@ -28,11 +50,11 @@ function ajax_login_form_user_login_form_alter(&$form, &$form_state, $form_id) {
  */
 function ajax_login_form_user_login_callback(&$form, &$form_state, $form_id) {
 
-  $account = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  //user_login_finalize(Drupal\user\Entity\User::load(UserAuth::authenticate($form_state->getValue('login'), $form_state->getValue('password'))));
 
-  if (!$account->isAnonymous()) {
+  if (\Drupal::currentUser()->isAuthenticated()) {
     $form = array();
-    
+    $account = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
     $form['ajax-login'] = array(
       '#markup' => t('Hello, @username! To see the website as a registered user go to this <a href="@user-url">link</a>.', array(
         '@username' => $account->getUsername(),
@@ -40,6 +62,6 @@ function ajax_login_form_user_login_callback(&$form, &$form_state, $form_id) {
       )),
     );
   }
-  
+
   return $form;
 }

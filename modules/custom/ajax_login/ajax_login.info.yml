@@ -2,5 +2,4 @@ name: AJAX Login
 description: 'Added AJAX in Login.'
 type: module
 core: 8.x
-version: 1.0
 package: Custom

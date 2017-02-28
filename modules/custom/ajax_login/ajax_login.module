@@ -1,5 +1,45 @@
 <?php
 
-function login_ajax_form_user_login_alter(&$form, &$form_state, $form_id) {
-    drupal_set_message($this->t('1'));
+/**
+ * @file
+ * AJAX Login module file.
+ *
+ * The module that modifies an existing entry form on the website so that it
+ * works without a reboot.
+ */
+
+/**
+ * Implements form_FORM_ID_alter().
+ */
+function ajax_login_form_user_login_form_alter(&$form, &$form_state, $form_id) {
+
+  $form['actions']['submit']['#ajax'] = array(
+    'callback' => 'ajax_login_form_user_login_callback',
+    'wrapper' => 'user-login-form',
+    'event' => 'click',
+  );
+}
+
+/**
+ * Function returns form.
+ *
+ * @return array
+ *   It returns a value depending on the state of user authentication.
+ */
+function ajax_login_form_user_login_callback(&$form, &$form_state, $form_id) {
+
+  $account = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+
+  if (!$account->isAnonymous()) {
+    $form = array();
+    
+    $form['ajax-login'] = array(
+      '#markup' => t('Hello, @username! To see the website as a registered user go to this <a href="@user-url">link</a>.', array(
+        '@username' => $account->getUsername(),
+        '@user-url' => '/user',
+      )),
+    );
+  }
+  
+  return $form;
 }

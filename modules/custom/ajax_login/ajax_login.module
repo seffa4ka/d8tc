@@ -12,30 +12,14 @@
  * Implements form_FORM_ID_alter().
  */
 function ajax_login_form_user_login_form_alter(&$form, &$form_state, $form_id) {
-/*
-  $form = array();
 
-  $form['login'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Login'),
-    '#required' => TRUE,
-  );
-
-  $form['password'] = array(
-    '#type' => 'password',
-    '#title' => t('Password'),
-    '#required' => TRUE,
-  );
-
-  $form['actions']['#type'] = 'actions';
-
-  $form['actions']['submit'] = array(
-    '#type' => 'submit',
+  $form['actions']['button'] = array(
+    '#type' => 'button',
     '#value' => t('mySubmit'),
     '#button_type' => 'primary',
   );
-*/
-  $form['actions']['submit']['#ajax'] = array(
+
+  $form['actions']['button']['#ajax'] = array(
     'callback' => 'ajax_login_form_user_login_callback',
     'wrapper' => 'user-login-form',
     'event' => 'click',
@@ -50,9 +34,10 @@ function ajax_login_form_user_login_form_alter(&$form, &$form_state, $form_id) {
  */
 function ajax_login_form_user_login_callback(&$form, &$form_state, $form_id) {
 
-  //user_login_finalize(Drupal\user\Entity\User::load(UserAuth::authenticate($form_state->getValue('login'), $form_state->getValue('password'))));
+  $uid = \Drupal::service('user.auth')->authenticate($form_state->getValue('name'), $form_state->getValue('pass'));
+  if($uid){
+    user_login_finalize(Drupal\user\Entity\User::load($uid));
 
-  if (\Drupal::currentUser()->isAuthenticated()) {
     $form = array();
     $account = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
     $form['ajax-login'] = array(

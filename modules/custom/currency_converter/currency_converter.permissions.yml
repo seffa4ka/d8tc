@@ -1,0 +1,33 @@
+add converter entity entities:
+  title: 'Create new Converter entity entities'
+
+administer converter entity entities:
+  title: 'Administer Converter entity entities'
+  description: 'Allow to access the administration form to configure Converter entity entities.'
+  restrict access: true
+
+delete converter entity entities:
+  title: 'Delete Converter entity entities'
+
+edit converter entity entities:
+  title: 'Edit Converter entity entities'
+
+access converter entity overview:
+  title: 'Access the Converter entity overview page'
+
+view published converter entity entities:
+  title: 'View published Converter entity entities'
+
+view unpublished converter entity entities:
+  title: 'View unpublished Converter entity entities'
+
+view all converter entity revisions:
+  title: 'View all Converter entity revisions'
+
+revert all converter entity revisions:
+  title: 'Revert all Converter entity revisions'
+  description: 'Role requires permission <em>view Converter entity revisions</em> and <em>edit rights</em> for converter entity entities in question or <em>administer converter entity entities</em>.'
+
+delete all converter entity revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Converter entity revisions</em> and <em>delete rights</em> for converter entity entities in question or <em>administer converter entity entities</em>.'

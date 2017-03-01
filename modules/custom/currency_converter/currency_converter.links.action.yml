@@ -1,0 +1,5 @@
+entity.converter_entity.add_form:
+  route_name: entity.converter_entity.add_form
+  title: 'Add Converter entity'
+  appears_on:
+    - entity.converter_entity.collection

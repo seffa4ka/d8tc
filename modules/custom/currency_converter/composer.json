@@ -1,0 +1,14 @@
+{
+  "name": "drupal/currency_converter",
+  "type": "drupal-module",
+  "description": "Converter",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/currency_converter",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/currency_converter",
+    "source": "http://cgit.drupalcode.org/currency_converter"
+  },
+  "require": { }
+}

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains currency_converter.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function currency_converter_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the currency_converter module.
+    case 'help.page.currency_converter':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Converter') . '</p>';
+      return $output;
+
+    default:
+  }
+}

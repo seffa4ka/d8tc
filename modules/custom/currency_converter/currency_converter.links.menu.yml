@@ -1,0 +1,14 @@
+
+# Converter entity menu items definition
+entity.converter_entity.collection:
+  title: 'Converter entity list'
+  route_name: entity.converter_entity.collection
+  description: 'List Converter entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+converter_entity.admin.structure.settings:
+  title: Converter entity settings
+  description: 'Configure Converter entity entities'
+  route_name: converter_entity.settings
+  parent: system.admin_structure

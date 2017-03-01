@@ -1,0 +1,27 @@
+# Converter entity routing definition
+converter_entity.settings_tab:
+  route_name: converter_entity.settings
+  title: 'Settings'
+  base_route: converter_entity.settings
+
+entity.converter_entity.canonical:
+  route_name: entity.converter_entity.canonical
+  base_route: entity.converter_entity.canonical
+  title: 'View'
+
+entity.converter_entity.edit_form:
+  route_name: entity.converter_entity.edit_form
+  base_route: entity.converter_entity.canonical
+  title: 'Edit'
+
+entity.converter_entity.version_history:
+  route_name: entity.converter_entity.version_history
+  base_route: entity.converter_entity.canonical
+  title: 'Revisions'
+
+entity.converter_entity.delete_form:
+  route_name:  entity.converter_entity.delete_form
+  base_route:  entity.converter_entity.canonical
+  title: Delete
+  weight: 10
+

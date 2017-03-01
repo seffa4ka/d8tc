@@ -1,0 +1,8 @@
+
+currency_converter.default_controller_index:
+  path: '/currency_converter'
+  defaults:
+    _controller: '\Drupal\currency_converter\Controller\DefaultController::index'
+    _title: 'index'
+  requirements:
+    _permission: 'access content'

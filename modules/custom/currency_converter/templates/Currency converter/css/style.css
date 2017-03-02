@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+
+.window-converter {
+	width: 310px;
+    height: 120px;
+    background-color: antiquewhite;
+}
+
+.slot-converter {
+    width: 310px;
+    height: 55px;
+    margin-top: 10px;
+    background-color: burlywood;
+}
+
+.label-converter{
+	width: 52px;
+    height: 18px;
+    float: left;
+    margin: 8px;
+    padding: 10px;
+    background-color: antiquewhite;
+}
+
+.input-converter {
+	width: 172px;
+    height: 18px;
+    float: right;
+    margin: 8px;
+    padding: 10px;
+    background-color: antiquewhite;
+}
+
+.button-converter{
+    width: 310px;
+}

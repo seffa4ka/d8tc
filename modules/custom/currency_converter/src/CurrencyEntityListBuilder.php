@@ -8,11 +8,11 @@ use Drupal\Core\Routing\LinkGeneratorTrait;
 use Drupal\Core\Url;
 
 /**
- * Defines a class to build a listing of Converter entity entities.
+ * Defines a class to build a listing of Currency entity entities.
  *
  * @ingroup currency_converter
  */
-class ConverterEntityListBuilder extends EntityListBuilder {
+class CurrencyEntityListBuilder extends EntityListBuilder {
 
   use LinkGeneratorTrait;
 
@@ -20,7 +20,7 @@ class ConverterEntityListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildHeader() {
-    $header['id'] = $this->t('Converter entity ID');
+    $header['id'] = $this->t('Currency entity ID');
     $header['name'] = $this->t('Name');
     return $header + parent::buildHeader();
   }
@@ -29,13 +29,13 @@ class ConverterEntityListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\currency_converter\Entity\ConverterEntity */
+    /* @var $entity \Drupal\currency_converter\Entity\CurrencyEntity */
     $row['id'] = $entity->id();
     $row['name'] = $this->l(
       $entity->label(),
       new Url(
-        'entity.converter_entity.edit_form', array(
-          'converter_entity' => $entity->id(),
+        'entity.currency_entity.edit_form', array(
+          'currency_entity' => $entity->id(),
         )
       )
     );

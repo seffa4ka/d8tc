@@ -6,15 +6,15 @@ use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
-use Drupal\currency_converter\Entity\ConverterEntityInterface;
+use Drupal\currency_converter\Entity\CurrencyEntityInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a form for reverting a Converter entity revision for a single translation.
+ * Provides a form for reverting a Currency entity revision for a single translation.
  *
  * @ingroup currency_converter
  */
-class ConverterEntityRevisionRevertTranslationForm extends ConverterEntityRevisionRevertForm {
+class CurrencyEntityRevisionRevertTranslationForm extends CurrencyEntityRevisionRevertForm {
 
 
   /**
@@ -32,10 +32,10 @@ class ConverterEntityRevisionRevertTranslationForm extends ConverterEntityRevisi
   protected $languageManager;
 
   /**
-   * Constructs a new ConverterEntityRevisionRevertTranslationForm.
+   * Constructs a new CurrencyEntityRevisionRevertTranslationForm.
    *
    * @param \Drupal\Core\Entity\EntityStorageInterface $entity_storage
-   *   The Converter entity storage.
+   *   The Currency entity storage.
    * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
    *   The date formatter service.
    * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
@@ -51,7 +51,7 @@ class ConverterEntityRevisionRevertTranslationForm extends ConverterEntityRevisi
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity.manager')->getStorage('converter_entity'),
+      $container->get('entity.manager')->getStorage('currency_entity'),
       $container->get('date.formatter'),
       $container->get('language_manager')
     );
@@ -61,7 +61,7 @@ class ConverterEntityRevisionRevertTranslationForm extends ConverterEntityRevisi
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'converter_entity_revision_revert_translation_confirm';
+    return 'currency_entity_revision_revert_translation_confirm';
   }
 
   /**
@@ -74,9 +74,9 @@ class ConverterEntityRevisionRevertTranslationForm extends ConverterEntityRevisi
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, $converter_entity_revision = NULL, $langcode = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, $currency_entity_revision = NULL, $langcode = NULL) {
     $this->langcode = $langcode;
-    $form = parent::buildForm($form, $form_state, $converter_entity_revision);
+    $form = parent::buildForm($form, $form_state, $currency_entity_revision);
 
     $form['revert_untranslated_fields'] = array(
       '#type' => 'checkbox',
@@ -90,11 +90,11 @@ class ConverterEntityRevisionRevertTranslationForm extends ConverterEntityRevisi
   /**
    * {@inheritdoc}
    */
-  protected function prepareRevertedRevision(ConverterEntityInterface $revision, FormStateInterface $form_state) {
+  protected function prepareRevertedRevision(CurrencyEntityInterface $revision, FormStateInterface $form_state) {
     $revert_untranslated_fields = $form_state->getValue('revert_untranslated_fields');
 
-    /** @var \Drupal\currency_converter\Entity\ConverterEntityInterface $default_revision */
-    $latest_revision = $this->ConverterEntityStorage->load($revision->id());
+    /** @var \Drupal\currency_converter\Entity\CurrencyEntityInterface $default_revision */
+    $latest_revision = $this->CurrencyEntityStorage->load($revision->id());
     $latest_revision_translation = $latest_revision->getTranslation($this->langcode);
 
     $revision_translation = $revision->getTranslation($this->langcode);

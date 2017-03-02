@@ -10,26 +10,26 @@ use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a form for deleting a Converter entity revision.
+ * Provides a form for deleting a Currency entity revision.
  *
  * @ingroup currency_converter
  */
-class ConverterEntityRevisionDeleteForm extends ConfirmFormBase {
+class CurrencyEntityRevisionDeleteForm extends ConfirmFormBase {
 
 
   /**
-   * The Converter entity revision.
+   * The Currency entity revision.
    *
-   * @var \Drupal\currency_converter\Entity\ConverterEntityInterface
+   * @var \Drupal\currency_converter\Entity\CurrencyEntityInterface
    */
   protected $revision;
 
   /**
-   * The Converter entity storage.
+   * The Currency entity storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
-  protected $ConverterEntityStorage;
+  protected $CurrencyEntityStorage;
 
   /**
    * The database connection.
@@ -39,7 +39,7 @@ class ConverterEntityRevisionDeleteForm extends ConfirmFormBase {
   protected $connection;
 
   /**
-   * Constructs a new ConverterEntityRevisionDeleteForm.
+   * Constructs a new CurrencyEntityRevisionDeleteForm.
    *
    * @param \Drupal\Core\Entity\EntityStorageInterface $entity_storage
    *   The entity storage.
@@ -47,7 +47,7 @@ class ConverterEntityRevisionDeleteForm extends ConfirmFormBase {
    *   The database connection.
    */
   public function __construct(EntityStorageInterface $entity_storage, Connection $connection) {
-    $this->ConverterEntityStorage = $entity_storage;
+    $this->CurrencyEntityStorage = $entity_storage;
     $this->connection = $connection;
   }
 
@@ -57,7 +57,7 @@ class ConverterEntityRevisionDeleteForm extends ConfirmFormBase {
   public static function create(ContainerInterface $container) {
     $entity_manager = $container->get('entity.manager');
     return new static(
-      $entity_manager->getStorage('converter_entity'),
+      $entity_manager->getStorage('currency_entity'),
       $container->get('database')
     );
   }
@@ -66,7 +66,7 @@ class ConverterEntityRevisionDeleteForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'converter_entity_revision_delete_confirm';
+    return 'currency_entity_revision_delete_confirm';
   }
 
   /**
@@ -80,7 +80,7 @@ class ConverterEntityRevisionDeleteForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return new Url('entity.converter_entity.version_history', array('converter_entity' => $this->revision->id()));
+    return new Url('entity.currency_entity.version_history', array('currency_entity' => $this->revision->id()));
   }
 
   /**
@@ -93,8 +93,8 @@ class ConverterEntityRevisionDeleteForm extends ConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, $converter_entity_revision = NULL) {
-    $this->revision = $this->ConverterEntityStorage->loadRevision($converter_entity_revision);
+  public function buildForm(array $form, FormStateInterface $form_state, $currency_entity_revision = NULL) {
+    $this->revision = $this->CurrencyEntityStorage->loadRevision($currency_entity_revision);
     $form = parent::buildForm($form, $form_state);
 
     return $form;
@@ -104,18 +104,18 @@ class ConverterEntityRevisionDeleteForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->ConverterEntityStorage->deleteRevision($this->revision->getRevisionId());
+    $this->CurrencyEntityStorage->deleteRevision($this->revision->getRevisionId());
 
-    $this->logger('content')->notice('Converter entity: deleted %title revision %revision.', array('%title' => $this->revision->label(), '%revision' => $this->revision->getRevisionId()));
-    drupal_set_message(t('Revision from %revision-date of Converter entity %title has been deleted.', array('%revision-date' => format_date($this->revision->getRevisionCreationTime()), '%title' => $this->revision->label())));
+    $this->logger('content')->notice('Currency entity: deleted %title revision %revision.', array('%title' => $this->revision->label(), '%revision' => $this->revision->getRevisionId()));
+    drupal_set_message(t('Revision from %revision-date of Currency entity %title has been deleted.', array('%revision-date' => format_date($this->revision->getRevisionCreationTime()), '%title' => $this->revision->label())));
     $form_state->setRedirect(
-      'entity.converter_entity.canonical',
-       array('converter_entity' => $this->revision->id())
+      'entity.currency_entity.canonical',
+       array('currency_entity' => $this->revision->id())
     );
-    if ($this->connection->query('SELECT COUNT(DISTINCT vid) FROM {converter_entity_field_revision} WHERE id = :id', array(':id' => $this->revision->id()))->fetchField() > 1) {
+    if ($this->connection->query('SELECT COUNT(DISTINCT vid) FROM {currency_entity_field_revision} WHERE id = :id', array(':id' => $this->revision->id()))->fetchField() > 1) {
       $form_state->setRedirect(
-        'entity.converter_entity.version_history',
-         array('converter_entity' => $this->revision->id())
+        'entity.currency_entity.version_history',
+         array('currency_entity' => $this->revision->id())
       );
     }
   }

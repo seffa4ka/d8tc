@@ -1,14 +1,14 @@
 
-# Converter entity menu items definition
-entity.converter_entity.collection:
-  title: 'Converter entity list'
-  route_name: entity.converter_entity.collection
-  description: 'List Converter entity entities'
+# Currency entity menu items definition
+entity.currency_entity.collection:
+  title: 'Currency entity list'
+  route_name: entity.currency_entity.collection
+  description: 'List Currency entity entities'
   parent: system.admin_structure
   weight: 100
 
-converter_entity.admin.structure.settings:
-  title: Converter entity settings
-  description: 'Configure Converter entity entities'
-  route_name: converter_entity.settings
+currency_entity.admin.structure.settings:
+  title: Currency entity settings
+  description: 'Configure Currency entity entities'
+  route_name: currency_entity.settings
   parent: system.admin_structure

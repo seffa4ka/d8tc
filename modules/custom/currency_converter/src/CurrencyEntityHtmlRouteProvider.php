@@ -7,12 +7,12 @@ use Drupal\Core\Entity\Routing\AdminHtmlRouteProvider;
 use Symfony\Component\Routing\Route;
 
 /**
- * Provides routes for Converter entity entities.
+ * Provides routes for Currency entity entities.
  *
  * @see Drupal\Core\Entity\Routing\AdminHtmlRouteProvider
  * @see Drupal\Core\Entity\Routing\DefaultHtmlRouteProvider
  */
-class ConverterEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
+class CurrencyEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
 
   /**
    * {@inheritdoc}
@@ -71,7 +71,7 @@ class ConverterEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
           '_entity_list' => $entity_type_id,
           '_title' => "{$entity_type->getLabel()} list",
         ])
-        ->setRequirement('_permission', 'access converter entity overview')
+        ->setRequirement('_permission', 'access currency entity overview')
         ->setOption('_admin_route', TRUE);
 
       return $route;
@@ -93,9 +93,9 @@ class ConverterEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
       $route
         ->setDefaults([
           '_title' => "{$entity_type->getLabel()} revisions",
-          '_controller' => '\Drupal\currency_converter\Controller\ConverterEntityController::revisionOverview',
+          '_controller' => '\Drupal\currency_converter\Controller\CurrencyEntityController::revisionOverview',
         ])
-        ->setRequirement('_permission', 'access converter entity revisions')
+        ->setRequirement('_permission', 'access currency entity revisions')
         ->setOption('_admin_route', TRUE);
 
       return $route;
@@ -116,10 +116,10 @@ class ConverterEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
       $route = new Route($entity_type->getLinkTemplate('revision'));
       $route
         ->setDefaults([
-          '_controller' => '\Drupal\currency_converter\Controller\ConverterEntityController::revisionShow',
-          '_title_callback' => '\Drupal\currency_converter\Controller\ConverterEntityController::revisionPageTitle',
+          '_controller' => '\Drupal\currency_converter\Controller\CurrencyEntityController::revisionShow',
+          '_title_callback' => '\Drupal\currency_converter\Controller\CurrencyEntityController::revisionPageTitle',
         ])
-        ->setRequirement('_permission', 'access converter entity revisions')
+        ->setRequirement('_permission', 'access currency entity revisions')
         ->setOption('_admin_route', TRUE);
 
       return $route;
@@ -140,10 +140,10 @@ class ConverterEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
       $route = new Route($entity_type->getLinkTemplate('revision_revert'));
       $route
         ->setDefaults([
-          '_form' => '\Drupal\currency_converter\Form\ConverterEntityRevisionRevertForm',
+          '_form' => '\Drupal\currency_converter\Form\CurrencyEntityRevisionRevertForm',
           '_title' => 'Revert to earlier revision',
         ])
-        ->setRequirement('_permission', 'revert all converter entity revisions')
+        ->setRequirement('_permission', 'revert all currency entity revisions')
         ->setOption('_admin_route', TRUE);
 
       return $route;
@@ -164,10 +164,10 @@ class ConverterEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
       $route = new Route($entity_type->getLinkTemplate('revision_delete'));
       $route
         ->setDefaults([
-          '_form' => '\Drupal\currency_converter\Form\ConverterEntityRevisionDeleteForm',
+          '_form' => '\Drupal\currency_converter\Form\CurrencyEntityRevisionDeleteForm',
           '_title' => 'Delete earlier revision',
         ])
-        ->setRequirement('_permission', 'delete all converter entity revisions')
+        ->setRequirement('_permission', 'delete all currency entity revisions')
         ->setOption('_admin_route', TRUE);
 
       return $route;
@@ -188,10 +188,10 @@ class ConverterEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
       $route = new Route($entity_type->getLinkTemplate('translation_revert'));
       $route
         ->setDefaults([
-          '_form' => '\Drupal\currency_converter\Form\ConverterEntityRevisionRevertTranslationForm',
+          '_form' => '\Drupal\currency_converter\Form\CurrencyEntityRevisionRevertTranslationForm',
           '_title' => 'Revert to earlier revision of a translation',
         ])
-        ->setRequirement('_permission', 'revert all converter entity revisions')
+        ->setRequirement('_permission', 'revert all currency entity revisions')
         ->setOption('_admin_route', TRUE);
 
       return $route;
@@ -212,7 +212,7 @@ class ConverterEntityHtmlRouteProvider extends AdminHtmlRouteProvider {
       $route = new Route("/admin/structure/{$entity_type->id()}/settings");
       $route
         ->setDefaults([
-          '_form' => 'Drupal\currency_converter\Form\ConverterEntitySettingsForm',
+          '_form' => 'Drupal\currency_converter\Form\CurrencyEntitySettingsForm',
           '_title' => "{$entity_type->getLabel()} settings",
         ])
         ->setRequirement('_permission', $entity_type->getAdminPermission())

@@ -5,9 +5,9 @@ namespace Drupal\currency_converter;
 use Drupal\content_translation\ContentTranslationHandler;
 
 /**
- * Defines the translation handler for converter_entity.
+ * Defines the translation handler for currency_entity.
  */
-class ConverterEntityTranslationHandler extends ContentTranslationHandler {
+class CurrencyEntityTranslationHandler extends ContentTranslationHandler {
 
   // Override here the needed methods from ContentTranslationHandler.
 

@@ -6,17 +6,17 @@ use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Form controller for Converter entity edit forms.
+ * Form controller for Currency entity edit forms.
  *
  * @ingroup currency_converter
  */
-class ConverterEntityForm extends ContentEntityForm {
+class CurrencyEntityForm extends ContentEntityForm {
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    /* @var $entity \Drupal\currency_converter\Entity\ConverterEntity */
+    /* @var $entity \Drupal\currency_converter\Entity\CurrencyEntity */
     $form = parent::buildForm($form, $form_state);
 
     if (!$this->entity->isNew()) {
@@ -55,17 +55,17 @@ class ConverterEntityForm extends ContentEntityForm {
 
     switch ($status) {
       case SAVED_NEW:
-        drupal_set_message($this->t('Created the %label Converter entity.', [
+        drupal_set_message($this->t('Created the %label Currency entity.', [
           '%label' => $entity->label(),
         ]));
         break;
 
       default:
-        drupal_set_message($this->t('Saved the %label Converter entity.', [
+        drupal_set_message($this->t('Saved the %label Currency entity.', [
           '%label' => $entity->label(),
         ]));
     }
-    $form_state->setRedirect('entity.converter_entity.canonical', ['converter_entity' => $entity->id()]);
+    $form_state->setRedirect('entity.currency_entity.canonical', ['currency_entity' => $entity->id()]);
   }
 
 }

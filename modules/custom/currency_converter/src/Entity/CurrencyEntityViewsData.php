@@ -5,9 +5,9 @@ namespace Drupal\currency_converter\Entity;
 use Drupal\views\EntityViewsData;
 
 /**
- * Provides Views data for Converter entity entities.
+ * Provides Views data for Currency entity entities.
  */
-class ConverterEntityViewsData extends EntityViewsData {
+class CurrencyEntityViewsData extends EntityViewsData {
 
   /**
    * {@inheritdoc}

@@ -6,13 +6,13 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Class ConverterEntitySettingsForm.
+ * Class CurrencyEntitySettingsForm.
  *
  * @package Drupal\currency_converter\Form
  *
  * @ingroup currency_converter
  */
-class ConverterEntitySettingsForm extends FormBase {
+class CurrencyEntitySettingsForm extends FormBase {
 
   /**
    * Returns a unique string identifying the form.
@@ -21,7 +21,7 @@ class ConverterEntitySettingsForm extends FormBase {
    *   The unique string identifying the form.
    */
   public function getFormId() {
-    return 'ConverterEntity_settings';
+    return 'CurrencyEntity_settings';
   }
 
   /**
@@ -37,7 +37,7 @@ class ConverterEntitySettingsForm extends FormBase {
   }
 
   /**
-   * Defines the settings form for Converter entity entities.
+   * Defines the settings form for Currency entity entities.
    *
    * @param array $form
    *   An associative array containing the structure of the form.
@@ -48,7 +48,7 @@ class ConverterEntitySettingsForm extends FormBase {
    *   Form definition array.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['ConverterEntity_settings']['#markup'] = 'Settings form for Converter entity entities. Manage field settings here.';
+    $form['CurrencyEntity_settings']['#markup'] = 'Settings form for Currency entity entities. Manage field settings here.';
     return $form;
   }
 

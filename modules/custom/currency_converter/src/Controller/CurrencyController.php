@@ -5,11 +5,11 @@ namespace Drupal\currency_converter\Controller;
 use Drupal\Core\Controller\ControllerBase;
 
 /**
- * Class DefaultController.
+ * Class CurrencyController.
  *
  * @package Drupal\currency_converter\Controller
  */
-class DefaultController extends ControllerBase {
+class CurrencyController extends ControllerBase {
 
   /**
    * Index.

@@ -10,37 +10,37 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\user\UserInterface;
 
 /**
- * Defines the Converter entity entity.
+ * Defines the Currency entity entity.
  *
  * @ingroup currency_converter
  *
  * @ContentEntityType(
- *   id = "converter_entity",
- *   label = @Translation("Converter entity"),
+ *   id = "currency_entity",
+ *   label = @Translation("Currency entity"),
  *   handlers = {
- *     "storage" = "Drupal\currency_converter\ConverterEntityStorage",
+ *     "storage" = "Drupal\currency_converter\CurrencyEntityStorage",
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
- *     "list_builder" = "Drupal\currency_converter\ConverterEntityListBuilder",
- *     "views_data" = "Drupal\currency_converter\Entity\ConverterEntityViewsData",
- *     "translation" = "Drupal\currency_converter\ConverterEntityTranslationHandler",
+ *     "list_builder" = "Drupal\currency_converter\CurrencyEntityListBuilder",
+ *     "views_data" = "Drupal\currency_converter\Entity\CurrencyEntityViewsData",
+ *     "translation" = "Drupal\currency_converter\CurrencyEntityTranslationHandler",
  *
  *     "form" = {
- *       "default" = "Drupal\currency_converter\Form\ConverterEntityForm",
- *       "add" = "Drupal\currency_converter\Form\ConverterEntityForm",
- *       "edit" = "Drupal\currency_converter\Form\ConverterEntityForm",
- *       "delete" = "Drupal\currency_converter\Form\ConverterEntityDeleteForm",
+ *       "default" = "Drupal\currency_converter\Form\CurrencyEntityForm",
+ *       "add" = "Drupal\currency_converter\Form\CurrencyEntityForm",
+ *       "edit" = "Drupal\currency_converter\Form\CurrencyEntityForm",
+ *       "delete" = "Drupal\currency_converter\Form\CurrencyEntityDeleteForm",
  *     },
- *     "access" = "Drupal\currency_converter\ConverterEntityAccessControlHandler",
+ *     "access" = "Drupal\currency_converter\CurrencyEntityAccessControlHandler",
  *     "route_provider" = {
- *       "html" = "Drupal\currency_converter\ConverterEntityHtmlRouteProvider",
+ *       "html" = "Drupal\currency_converter\CurrencyEntityHtmlRouteProvider",
  *     },
  *   },
- *   base_table = "converter_entity",
- *   data_table = "converter_entity_field_data",
- *   revision_table = "converter_entity_revision",
- *   revision_data_table = "converter_entity_field_revision",
+ *   base_table = "currency_entity",
+ *   data_table = "currency_entity_field_data",
+ *   revision_table = "currency_entity_revision",
+ *   revision_data_table = "currency_entity_field_revision",
  *   translatable = TRUE,
- *   admin_permission = "administer converter entity entities",
+ *   admin_permission = "administer currency entity entities",
  *   entity_keys = {
  *     "id" = "id",
  *     "revision" = "vid",
@@ -51,21 +51,21 @@ use Drupal\user\UserInterface;
  *     "status" = "status",
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/converter_entity/{converter_entity}",
- *     "add-form" = "/admin/structure/converter_entity/add",
- *     "edit-form" = "/admin/structure/converter_entity/{converter_entity}/edit",
- *     "delete-form" = "/admin/structure/converter_entity/{converter_entity}/delete",
- *     "version-history" = "/admin/structure/converter_entity/{converter_entity}/revisions",
- *     "revision" = "/admin/structure/converter_entity/{converter_entity}/revisions/{converter_entity_revision}/view",
- *     "revision_revert" = "/admin/structure/converter_entity/{converter_entity}/revisions/{converter_entity_revision}/revert",
- *     "translation_revert" = "/admin/structure/converter_entity/{converter_entity}/revisions/{converter_entity_revision}/revert/{langcode}",
- *     "revision_delete" = "/admin/structure/converter_entity/{converter_entity}/revisions/{converter_entity_revision}/delete",
- *     "collection" = "/admin/structure/converter_entity",
+ *     "canonical" = "/admin/structure/currency_entity/{currency_entity}",
+ *     "add-form" = "/admin/structure/currency_entity/add",
+ *     "edit-form" = "/admin/structure/currency_entity/{currency_entity}/edit",
+ *     "delete-form" = "/admin/structure/currency_entity/{currency_entity}/delete",
+ *     "version-history" = "/admin/structure/currency_entity/{currency_entity}/revisions",
+ *     "revision" = "/admin/structure/currency_entity/{currency_entity}/revisions/{currency_entity_revision}/view",
+ *     "revision_revert" = "/admin/structure/currency_entity/{currency_entity}/revisions/{currency_entity_revision}/revert",
+ *     "translation_revert" = "/admin/structure/currency_entity/{currency_entity}/revisions/{currency_entity_revision}/revert/{langcode}",
+ *     "revision_delete" = "/admin/structure/currency_entity/{currency_entity}/revisions/{currency_entity_revision}/delete",
+ *     "collection" = "/admin/structure/currency_entity",
  *   },
- *   field_ui_base_route = "converter_entity.settings"
+ *   field_ui_base_route = "currency_entity.settings"
  * )
  */
-class ConverterEntity extends RevisionableContentEntityBase implements ConverterEntityInterface {
+class CurrencyEntity extends RevisionableContentEntityBase implements CurrencyEntityInterface {
 
   use EntityChangedTrait;
 
@@ -94,7 +94,7 @@ class ConverterEntity extends RevisionableContentEntityBase implements Converter
       }
     }
 
-    // If no revision author has been set explicitly, make the converter_entity owner the
+    // If no revision author has been set explicitly, make the currency_entity owner the
     // revision author.
     if (!$this->getRevisionUser()) {
       $this->setRevisionUserId($this->getOwnerId());
@@ -214,7 +214,7 @@ class ConverterEntity extends RevisionableContentEntityBase implements Converter
 
     $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Authored by'))
-      ->setDescription(t('The user ID of author of the Converter entity entity.'))
+      ->setDescription(t('The user ID of author of the Currency entity entity.'))
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'user')
       ->setSetting('handler', 'default')
@@ -239,7 +239,7 @@ class ConverterEntity extends RevisionableContentEntityBase implements Converter
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
-      ->setDescription(t('The name of the Converter entity entity.'))
+      ->setDescription(t('The name of the Currency entity entity.'))
       ->setRevisionable(TRUE)
       ->setSettings(array(
         'max_length' => 50,
@@ -260,7 +260,7 @@ class ConverterEntity extends RevisionableContentEntityBase implements Converter
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Publishing status'))
-      ->setDescription(t('A boolean indicating whether the Converter entity is published.'))
+      ->setDescription(t('A boolean indicating whether the Currency entity is published.'))
       ->setRevisionable(TRUE)
       ->setDefaultValue(TRUE);
 

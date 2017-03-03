@@ -1,0 +1,9 @@
+currency_converter_libraries:
+  version: 1.x
+  css:
+    theme:
+      css/currency_converter_style.css: {}
+  js:
+    js/currency_converter_script.js: {preprocess: false}
+  dependencies:
+    - core/jquery

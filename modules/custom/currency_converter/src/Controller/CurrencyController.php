@@ -19,8 +19,12 @@ class CurrencyController extends ControllerBase {
    */
   public function index() {
     return [
-      '#type' => 'markup',
-      '#markup' => $this->t('Implement method: index')
+      '#theme' => 'currency_converter',
+      '#attached' => array(
+        'library' => array(
+          'currency_converter/currency_converter_libraries',
+        ),
+      ),
     ];
   }
 

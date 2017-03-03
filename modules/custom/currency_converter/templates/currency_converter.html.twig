@@ -1,1 +1,33 @@
-<!-- Add you custom twig html here -->
+{#
+/**
+ * @file currency_converter.html.twig
+ * Main theme.
+ */
+#}
+<div class="window-converter">
+  <div class="first-slot-converter slot-converter">
+    <div class="label-converter">
+      <select id="select1">
+        <option id="USD">USD</option>
+        <option id="RUB">RUB</option>
+        <option id="EUR">EUR</option>
+      </select>
+    </div>
+    <div class="input-converter">
+      <input type="number" id="text1" step="0.001" min="0">
+    </div>
+  </div>
+  <div class="second-slot-converter slot-converter">
+    <div class="label-converter">
+      <select id="select2">
+        <option id="USD">USD</option>
+        <option id="RUB">RUB</option>
+        <option id="EUR">EUR</option>
+      </select>
+    </div>
+    <div class="input-converter">
+      <input type="number" id="text2" step="0.001" min="0">
+    </div>
+  </div>
+</div>
+<button class="button-converter">flip</button>

@@ -1,0 +1,18 @@
+uuid: 9c0aba8f-a016-406d-9dd2-f0aaf1b9b6ba
+langcode: en
+status: true
+dependencies:
+  module:
+    - currency_converter
+id: currency_entity.field_source_currency_value
+field_name: field_source_currency_value
+entity_type: currency_entity
+type: float
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

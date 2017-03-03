@@ -1,0 +1,20 @@
+uuid: b2fa9510-2588-46ad-83bd-b56b724bedae
+langcode: en
+status: true
+dependencies:
+  module:
+    - currency_converter
+    - text
+id: currency_entity.field_source_currency_code
+field_name: field_source_currency_code
+entity_type: currency_entity
+type: text
+settings:
+  max_length: 3
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

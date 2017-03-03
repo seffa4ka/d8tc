@@ -1,0 +1,52 @@
+uuid: db2b548e-c84b-4b80-b962-dcd42f2e8814
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.currency_entity.currency_entity.field_destination_currency_code
+    - field.field.currency_entity.currency_entity.field_source_currency_code
+    - field.field.currency_entity.currency_entity.field_source_currency_value
+  module:
+    - currency_converter
+    - text
+id: currency_entity.currency_entity.default
+targetEntityType: currency_entity
+bundle: currency_entity
+mode: default
+content:
+  field_destination_currency_code:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+  field_source_currency_code:
+    weight: 30
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+  field_source_currency_value:
+    weight: 28
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  name:
+    type: string_textfield
+    weight: -4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

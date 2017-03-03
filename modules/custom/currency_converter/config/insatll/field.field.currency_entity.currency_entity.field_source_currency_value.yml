@@ -1,0 +1,24 @@
+uuid: 169b3248-8a3d-464f-8862-8cedc65165ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.currency_entity.field_source_currency_value
+  module:
+    - currency_converter
+id: currency_entity.currency_entity.field_source_currency_value
+field_name: field_source_currency_value
+entity_type: currency_entity
+bundle: currency_entity
+label: 'source currency value'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

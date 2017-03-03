@@ -1,5 +1,5 @@
 name: Currency Converter
 type: module
-description: Currency Converter
+description: converter
 core: 8.x
 package: Custom

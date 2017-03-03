@@ -3,6 +3,6 @@ currency_converter.currency_controller_index:
   path: '/currency_converter'
   defaults:
     _controller: '\Drupal\currency_converter\Controller\CurrencyController::index'
-    _title: 'Currency Converter'
+    _title: 'index'
   requirements:
     _permission: 'access content'

@@ -30,6 +30,9 @@ function currency_converter_theme() {
   return [
     'currency_converter' => [
       'template' => 'currency_converter',
+      'variables' => [
+        'currencies' => [],
+      ],
       'render element' => 'children',
     ],
   ];

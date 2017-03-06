@@ -8,9 +8,9 @@
   <div class="first-slot-converter slot-converter">
     <div class="label-converter">
       <select id="select1">
-        <option id="USD">USD</option>
-        <option id="RUB">RUB</option>
-        <option id="EUR">EUR</option>
+        {% for currency in currencies %}
+          <option id="{{ currency }}">{{ currency }}</option>
+        {% endfor %}
       </select>
     </div>
     <div class="input-converter">
@@ -20,9 +20,9 @@
   <div class="second-slot-converter slot-converter">
     <div class="label-converter">
       <select id="select2">
-        <option id="USD">USD</option>
-        <option id="RUB">RUB</option>
-        <option id="EUR">EUR</option>
+        {% for currency in currencies %}
+          <option id="{{ currency }}">{{ currency }}</option>
+        {% endfor %}
       </select>
     </div>
     <div class="input-converter">

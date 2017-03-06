@@ -9,29 +9,8 @@
       var flag = true;
       var currency = new Array();
       var convertValue;
-      /*
-          var RUB = new Object();
-          RUB.USD = 58.38;
-          RUB.EUR = 61.54;
 
-          var USD = new Object();
-          USD.RUB = 0.017;
-          USD.EUR = 1.054;
-
-          var EUR = new Object();
-          EUR.USD = 0.949;
-          EUR.RUB = 0.016;
-      */
-      var currencyAll = new Array();
-      currencyAll['RUB'] = new Array();
-      currencyAll['RUB']['USD'] = 58.38;
-      currencyAll['RUB']['EUR'] = 61.54;
-      currencyAll['USD'] = new Array();
-      currencyAll['USD']['RUB'] = 0.017;
-      currencyAll['USD']['EUR'] = 1.054;
-      currencyAll['EUR'] = new Array();
-      currencyAll['EUR']['USD'] = 0.949;
-      currencyAll['EUR']['RUB'] = 0.016;
+      var currencyAll = drupalSettings.currencies;
 
       /**
        * Getting all currency.

@@ -4,7 +4,7 @@ dependencies:
   module:
     - currency_converter
     - text
-id: currency_entity.field_destination_currency_code
+id: currency_converter.currency_entity.field_destination_currency_code
 field_name: field_destination_currency_code
 entity_type: currency_entity
 type: text

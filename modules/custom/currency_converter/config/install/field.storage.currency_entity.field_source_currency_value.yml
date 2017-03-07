@@ -3,7 +3,7 @@ status: true
 dependencies:
   module:
     - currency_converter
-id: currency_entity.field_source_currency_value
+id: currency_converter.currency_entity.field_source_currency_value
 field_name: field_source_currency_value
 entity_type: currency_entity
 type: float

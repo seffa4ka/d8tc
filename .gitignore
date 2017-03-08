@@ -5,3 +5,5 @@ sites/*/files
 sites/*/private
 
 sites/simpletest
+
+modules/contrib/

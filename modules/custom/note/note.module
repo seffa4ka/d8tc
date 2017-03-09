@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains note.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function note_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the note module.
+    case 'help.page.note':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('note') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function note_theme() {
+  return [
+    'note' => [
+      'template' => 'note',
+      'render element' => 'children',
+    ],
+  ];
+}

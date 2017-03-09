@@ -1,0 +1,5 @@
+name: note
+type: module
+description: note
+core: 8.x
+package: Custom

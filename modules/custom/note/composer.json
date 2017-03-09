@@ -1,0 +1,14 @@
+{
+  "name": "drupal/note",
+  "type": "drupal-module",
+  "description": "note",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/note",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/note",
+    "source": "http://cgit.drupalcode.org/note"
+  },
+  "require": { }
+}

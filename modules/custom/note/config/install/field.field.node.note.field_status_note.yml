@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_status_note
+    - node.type.note
+  module:
+    - text
+id: node.note.field_status_note
+field_name: field_status_note
+entity_type: node
+bundle: note
+label: Status
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

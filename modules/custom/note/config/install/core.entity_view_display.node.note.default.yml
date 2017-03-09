@@ -1,23 +1,30 @@
 langcode: en
 status: true
 dependencies:
-    config:
-        - field.field.node.note.body
-        - node.type.note
-    module:
-        - text
-        - user
+  config:
+    - field.field.node.note.body
+    - field.field.node.note.field_status_note
+    - node.type.note
+  module:
+    - text
+    - user
 id: node.note.default
 targetEntityType: node
 bundle: note
 mode: default
 content:
-    body:
-        label: hidden
-        type: text_default
-        weight: 101
-        settings: {  }
-        third_party_settings: {  }
-    links:
-        weight: 100
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_status_note:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  links:
+    weight: 100
 hidden: {  }

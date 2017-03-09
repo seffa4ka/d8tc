@@ -6,7 +6,7 @@ dependencies:
       - note
 name: 'Note'
 type: note
-description: 'Note.'
+description: ''
 help: ''
 new_revision: false
 preview_mode: 1

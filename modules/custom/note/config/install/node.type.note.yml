@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - note
+name: 'Note'
+type: note
+description: 'Note.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

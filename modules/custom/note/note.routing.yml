@@ -1,8 +1,8 @@
-
-note.note_controller_index:
-  path: '/note'
+note.settings:
+  path: '/admin/config/note'
   defaults:
     _controller: '\Drupal\note\Controller\NoteController::index'
-    _title: 'Note'
+    _title: 'Note settings'
+    #_form: '\Drupal\note\Form\NoteSettingsForm'
   requirements:
-    _permission: 'access content'
+    _permission: 'administer site configuration'

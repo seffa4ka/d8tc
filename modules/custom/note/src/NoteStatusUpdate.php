@@ -11,14 +11,16 @@ namespace Drupal\note;
 use Drupal\node\Entity\Node;
 
 /**
- * Description of NoteStatusUpdate
+ * Description of NoteStatusUpdate.
  *
  * @author seffka
  */
 class NoteStatusUpdate {
-  //put your code here
 
-  public static function updateNoteStatusNA($nids, &$context){
+  /**
+   * Set status NA.
+   */
+  public static function updateNoteStatusNa($nids, &$context) {
     $message = 'Updating Note status...';
     $results = array();
     foreach ($nids as $nid) {
@@ -30,7 +32,10 @@ class NoteStatusUpdate {
     $context['results'] = $results;
   }
 
-  public static function updateNoteStatusActual($nids, &$context){
+  /**
+   * Set status Actuadl.
+   */
+  public static function updateNoteStatusActual($nids, &$context) {
     $message = 'Updating Note status...';
     $results = array();
     foreach ($nids as $nid) {
@@ -42,7 +47,10 @@ class NoteStatusUpdate {
     $context['results'] = $results;
   }
 
-  public static function updateNoteStatusExpired($nids, &$context){
+  /**
+   * Set status Expired.
+   */
+  public static function updateNoteStatusExpired($nids, &$context) {
     $message = 'Updating Note status...';
     $results = array();
     foreach ($nids as $nid) {
@@ -54,13 +62,19 @@ class NoteStatusUpdate {
     $context['results'] = $results;
   }
 
-  function finishedCallback($success, $results, $operations) {
+  /**
+   * Callback function.
+   */
+  public function finishedCallback($success, $results, $operations) {
+
     if ($success) {
-      $message =  t('Status updated.');
+      $message = t('Status updated.');
     }
     else {
       $message = t('Finished with an error.');
     }
+
     drupal_set_message($message);
   }
+
 }

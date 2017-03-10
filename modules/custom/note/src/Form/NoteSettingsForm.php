@@ -1,11 +1,11 @@
 <?php
 
+namespace Drupal\note\Form;
+
 /**
  * @file
  * Contains \Drupal\note\Form\NoteSettingsForm.
  */
-
-namespace Drupal\note\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -62,44 +62,29 @@ class NoteSettingsForm extends FormBase {
 
     if ($inputDate) {
       foreach ($ids as $id) {
-        if ($nodes[$id]->created->value > $inputDate){
-          //actual
+        if ($nodes[$id]->created->value > $inputDate) {
           array_push($aids, $id);
         }
         else {
-          //expired
           array_push($eids, $id);
         }
       }
     }
     else {
-      //NA
       $naids = $ids;
     }
-    
-    //batch
+
     $batch = array(
       'title' => t('Do...'),
       'operations' => array(
-        array(
-          '\Drupal\note\NoteStatusUpdate::updateNoteStatusActual',
-          array($aids)
-        ),
-        array(
-          '\Drupal\note\NoteStatusUpdate::updateNoteStatusExpired',
-          array($eids)
-        ),
-        array(
-          '\Drupal\note\NoteStatusUpdate::updateNoteStatusNA',
-          array($naids)
-        ),
+        array('\Drupal\note\NoteStatusUpdate::updateNoteStatusActual', array($aids)),
+        array('\Drupal\note\NoteStatusUpdate::updateNoteStatusExpired', array($eids)),
+        array('\Drupal\note\NoteStatusUpdate::updateNoteStatusNa', array($naids)),
       ),
       'finished' => '\Drupal\note\NoteStatusUpdate::finishedCallback',
     );
-    
+
     batch_set($batch);
   }
 
 }
-
-

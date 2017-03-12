@@ -1,0 +1,8 @@
+
+sending_messages.default_controller_index:
+  path: '/sending_messages'
+  defaults:
+    _controller: '\Drupal\sending_messages\Controller\DefaultController::index'
+    _title: 'index'
+  requirements:
+    _permission: 'access content'

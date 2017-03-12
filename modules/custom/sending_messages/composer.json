@@ -1,0 +1,14 @@
+{
+  "name": "drupal/sending_messages",
+  "type": "drupal-module",
+  "description": "sending messages",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/sending_messages",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/sending_messages",
+    "source": "http://cgit.drupalcode.org/sending_messages"
+  },
+  "require": { }
+}

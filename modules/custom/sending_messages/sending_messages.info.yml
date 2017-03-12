@@ -1,0 +1,5 @@
+name: sending messages
+type: module
+description: sending messages
+core: 8.x
+package: Custom

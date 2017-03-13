@@ -47,3 +47,20 @@ function sending_messages_mail($key, &$message, $params) {
       break;
   }
 }
+
+/**
+ * Implements hook_cron().
+ */
+function sending_messages_cron() {
+    $ids = \Drupal::entityQuery('users_entity')
+      ->condition('field_status', 0)
+      ->range(0,1)
+      ->execute();
+    $users = \Drupal::entityTypeManager()->getStorage('users_entity')->loadMultiple($ids);
+    foreach ($ids as $id){
+      $data['uid'] = $users[$id]->id->value;
+      $queue = \Drupal::queue('email_queue');
+      $queue->createQueue();
+      $queue->createItem($data);
+    }
+}

@@ -70,11 +70,6 @@ class SendingMessagesSettingsForm extends FormBase {
         );
         $entityUser = entity_create('users_entity', $valueUser);
         $entityUser->save();
-
-        $data['uid'] = $entityUser->id();
-        $queue = \Drupal::queue('email_queue');
-        $queue->createQueue();
-        $queue->createItem($data);
       }
     }
   }

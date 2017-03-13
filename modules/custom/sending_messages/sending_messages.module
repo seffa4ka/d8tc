@@ -34,3 +34,16 @@ function sending_messages_theme() {
     ],
   ];
 }
+
+/**
+ * Implements hook_mail().
+ */
+function sending_messages_mail($key, &$message, $params) {
+  switch ($key) {
+    // Send a simple message from the contact form.
+    case 'email_queue':
+      $message['subject'] = 'Read Now!';
+      $message['body'][] = Drupal\Core\Mail\MailFormatHelper::htmlToText($params['message']);
+      break;
+  }
+}

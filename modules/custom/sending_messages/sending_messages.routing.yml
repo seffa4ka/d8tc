@@ -6,3 +6,11 @@ sending_messages.default_controller_index:
     _title: 'index'
   requirements:
     _permission: 'access content'
+
+sending_messages.settings:
+  path: '/admin/config/sending_messages'
+  defaults:
+    _title: 'Sending messages settings'
+    _form: '\Drupal\sending_messages\Form\SendingMessagesSettingsForm'
+  requirements:
+    _permission: 'administer site configuration'

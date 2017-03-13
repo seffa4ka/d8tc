@@ -1,0 +1,28 @@
+
+# Messages entity menu items definition
+entity.messages_entity.collection:
+  title: 'Messages entity list'
+  route_name: entity.messages_entity.collection
+  description: 'List Messages entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+messages_entity.admin.structure.settings:
+  title: Messages entity settings
+  description: 'Configure Messages entity entities'
+  route_name: messages_entity.settings
+  parent: system.admin_structure
+
+# Users entity menu items definition
+entity.users_entity.collection:
+  title: 'Users entity list'
+  route_name: entity.users_entity.collection
+  description: 'List Users entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+users_entity.admin.structure.settings:
+  title: Users entity settings
+  description: 'Configure Users entity entities'
+  route_name: users_entity.settings
+  parent: system.admin_structure

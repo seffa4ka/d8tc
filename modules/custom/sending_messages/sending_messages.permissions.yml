@@ -1,0 +1,66 @@
+add messages entity entities:
+  title: 'Create new Messages entity entities'
+
+administer messages entity entities:
+  title: 'Administer Messages entity entities'
+  description: 'Allow to access the administration form to configure Messages entity entities.'
+  restrict access: true
+
+delete messages entity entities:
+  title: 'Delete Messages entity entities'
+
+edit messages entity entities:
+  title: 'Edit Messages entity entities'
+
+access messages entity overview:
+  title: 'Access the Messages entity overview page'
+
+view published messages entity entities:
+  title: 'View published Messages entity entities'
+
+view unpublished messages entity entities:
+  title: 'View unpublished Messages entity entities'
+
+view all messages entity revisions:
+  title: 'View all Messages entity revisions'
+
+revert all messages entity revisions:
+  title: 'Revert all Messages entity revisions'
+  description: 'Role requires permission <em>view Messages entity revisions</em> and <em>edit rights</em> for messages entity entities in question or <em>administer messages entity entities</em>.'
+
+delete all messages entity revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Messages entity revisions</em> and <em>delete rights</em> for messages entity entities in question or <em>administer messages entity entities</em>.'
+add users entity entities:
+  title: 'Create new Users entity entities'
+
+administer users entity entities:
+  title: 'Administer Users entity entities'
+  description: 'Allow to access the administration form to configure Users entity entities.'
+  restrict access: true
+
+delete users entity entities:
+  title: 'Delete Users entity entities'
+
+edit users entity entities:
+  title: 'Edit Users entity entities'
+
+access users entity overview:
+  title: 'Access the Users entity overview page'
+
+view published users entity entities:
+  title: 'View published Users entity entities'
+
+view unpublished users entity entities:
+  title: 'View unpublished Users entity entities'
+
+view all users entity revisions:
+  title: 'View all Users entity revisions'
+
+revert all users entity revisions:
+  title: 'Revert all Users entity revisions'
+  description: 'Role requires permission <em>view Users entity revisions</em> and <em>edit rights</em> for users entity entities in question or <em>administer users entity entities</em>.'
+
+delete all users entity revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Users entity revisions</em> and <em>delete rights</em> for users entity entities in question or <em>administer users entity entities</em>.'

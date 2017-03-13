@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - sending_messages
+    - text
+id: users_entity.field_message_id
+field_name: field_message_id
+entity_type: users_entity
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

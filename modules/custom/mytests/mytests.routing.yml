@@ -1,0 +1,8 @@
+
+mytests.default_controller_index:
+  path: '/tests'
+  defaults:
+    _controller: '\Drupal\mytests\Controller\DefaultController::index'
+    _title: 'Index'
+  requirements:
+    _permission: 'access content'

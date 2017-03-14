@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Mail\MailFormatHelper;
 
 /**
  * Implements hook_help().
@@ -43,7 +44,7 @@ function sending_messages_mail($key, &$message, $params) {
     // Send a simple message from the contact form.
     case 'email_queue':
       $message['subject'] = 'Read Now!';
-      $message['body'][] = Drupal\Core\Mail\MailFormatHelper::htmlToText($params['message']);
+      $message['body'][] = MailFormatHelper::htmlToText($params['message']);
       break;
   }
 }
@@ -52,15 +53,16 @@ function sending_messages_mail($key, &$message, $params) {
  * Implements hook_cron().
  */
 function sending_messages_cron() {
-    $ids = \Drupal::entityQuery('users_entity')
-      ->condition('field_status', 0)
-      ->range(0,1)
-      ->execute();
-    $users = \Drupal::entityTypeManager()->getStorage('users_entity')->loadMultiple($ids);
-    foreach ($ids as $id){
-      $data['uid'] = $users[$id]->id->value;
-      $queue = \Drupal::queue('email_queue');
-      $queue->createQueue();
-      $queue->createItem($data);
-    }
+  \Drupal::logger('sending_messages')->notice('hook_cron');
+  $ids = \Drupal::entityQuery('users_entity')
+    ->condition('field_status', 0)
+    ->range(0, 1)
+    ->execute();
+  $users = \Drupal::entityTypeManager()->getStorage('users_entity')->loadMultiple($ids);
+  foreach ($ids as $id) {
+    $data['uid'] = $users[$id]->id->value;
+    $queue = \Drupal::queue('email_queue');
+    $queue->createQueue();
+    $queue->createItem($data);
+  }
 }

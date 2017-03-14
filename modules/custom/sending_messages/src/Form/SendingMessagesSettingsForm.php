@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Drupal\sending_messages\Form;
 
 /**
@@ -32,6 +31,8 @@ class SendingMessagesSettingsForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
 
+    $count_value = \Drupal::config('sending_messages.settings')->get('count_value');
+
     $form['textarea'] = array(
       '#type' => 'textarea',
       '#title' => $this->t('Message'),
@@ -42,6 +43,24 @@ class SendingMessagesSettingsForm extends FormBase {
       '#value' => $this->t('Send All'),
       '#button_type' => 'primary',
     );
+
+    $form['count_value'] = array(
+      '#title' => $this->t('Sent by'),
+      '#type' => 'radios',
+      '#default_value' => $count_value ? $count_value : 2,
+      '#options' => array(
+        1 => $this->t('1 message'),
+        2 => $this->t('2 messages'),
+        5 => $this->t('5 messages'),
+      ),
+    );
+
+    $form['count'] = array(
+      '#type' => 'submit',
+      '#value' => $this->t('Update'),
+      '#submit' => array('::newSubmissionCount'),
+    );
+
     return $form;
   }
 
@@ -61,8 +80,8 @@ class SendingMessagesSettingsForm extends FormBase {
     $ids = \Drupal::entityQuery('user')
       ->execute();
     $users = \Drupal::entityTypeManager()->getStorage('user')->loadMultiple($ids);
-    foreach ($ids as $id){
-      if ($id != 0 && $id != 1){
+    foreach ($ids as $id) {
+      if ($id != 0 && $id != 1) {
 
         $valueUser = array(
           'field_email' => $users[$id]->mail->value,
@@ -73,5 +92,17 @@ class SendingMessagesSettingsForm extends FormBase {
       }
     }
   }
-  
+
+  /**
+   * Submitting forms.
+   *
+   * @{@inheritdoc}
+   */
+  public function newSubmissionCount(array &$form, FormStateInterface $form_state) {
+    drupal_set_message('Settings updated');
+    $config = \Drupal::service('config.factory')->getEditable('sending_messages.settings');
+    $config->set('count_value', $form_state->getValue('count_value'))
+      ->save();
+  }
+
 }

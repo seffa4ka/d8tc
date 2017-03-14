@@ -54,9 +54,10 @@ function sending_messages_mail($key, &$message, $params) {
  */
 function sending_messages_cron() {
   \Drupal::logger('sending_messages')->notice('hook_cron');
+  $count_value = \Drupal::config('sending_messages.settings')->get('count_value');
   $ids = \Drupal::entityQuery('users_entity')
     ->condition('field_status', 0)
-    ->range(0, 1)
+    ->range(0, $count_value)
     ->execute();
   $users = \Drupal::entityTypeManager()->getStorage('users_entity')->loadMultiple($ids);
   foreach ($ids as $id) {

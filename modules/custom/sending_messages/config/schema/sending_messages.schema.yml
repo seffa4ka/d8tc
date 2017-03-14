@@ -1,0 +1,6 @@
+sending_messages.settings:
+  type: mapping
+  label: Variable Settings
+  mapping:
+    count_value:
+      type: integer

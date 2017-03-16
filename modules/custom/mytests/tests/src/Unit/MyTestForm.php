@@ -8,6 +8,20 @@ namespace Drupal\Tests\sending_messages\Unit;
  * @author seffka
  */
 class MyTestForm extends \PHPUnit_Framework_TestCase{
+  /**
+  * Check email subject. 
+  *
+  * @param type $subject
+  */
+  public static function checkSubject($subject) {
+    if(is_string($subject)) {
+      if(strlen($subject) < 64) {
+        return TRUE;
+      }
+    }
+
+    return FALSE;
+  }
 
   /**
   * Check email address. 
@@ -15,12 +29,25 @@ class MyTestForm extends \PHPUnit_Framework_TestCase{
   * @param type $mail
   */
   public static function checkEmail($mail) {
+
     if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
       return TRUE;
     }
-    else {
-      return FALSE;
-    }
+
+    return FALSE;
+  }
+
+  /**
+   * Tests function that checks subject.
+   *
+   * @param $subject
+   *
+   * @dataProvider subjectDataProvider
+   *
+   * @see MyTestForm::emailDataProvider()
+   */
+  public function testSubjectEmail($subject, $expected) {
+    $this->assertEquals($expected, MyTestForm::checkSubject($subject));
   }
 
   /**
@@ -34,6 +61,27 @@ class MyTestForm extends \PHPUnit_Framework_TestCase{
    */
   public function testCheckEmail($mail, $expected) {
     $this->assertEquals($expected, MyTestForm::checkEmail($mail));
+  }
+
+  /**
+   * Subject Data provider.
+   *
+   * @return array
+   *
+   * @dataProvider subjectDataProvider
+   * 
+   * @see MyTestForm::subjectDataProvider()
+   */
+  public function subjectDataProvider() {
+    $data = array(
+      array('subjectsubjectsubjectsubjectsubjectsubjectsubjectsubjectsubjectsubject', FALSE),
+      array('subject', TRUE),
+      array(2.222, FALSE),
+      array(1, FALSE),
+      array(TRUE, FALSE),
+      array(new \stdClass(), FALSE),
+    );
+    return $data;
   }
 
   /**

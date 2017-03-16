@@ -3,19 +3,21 @@
 namespace Drupal\Tests\sending_messages\Unit;
 
 /**
- * Description of MyFirstTest
+ * Description of MyFirstTest.
  *
  * @author seffka
  */
-class MyTestForm extends \PHPUnit_Framework_TestCase{
+class MyTestForm extends \PHPUnit_Framework_TestCase {
+
   /**
-  * Check email subject. 
-  *
-  * @param type $subject
-  */
+   * Check email subject.
+   *
+   * @param mixed $subject
+   *   Actual value.
+   */
   public static function checkSubject($subject) {
-    if(is_string($subject)) {
-      if(strlen($subject) < 64) {
+    if (is_string($subject)) {
+      if (strlen($subject) < 64) {
         return TRUE;
       }
     }
@@ -24,13 +26,14 @@ class MyTestForm extends \PHPUnit_Framework_TestCase{
   }
 
   /**
-  * Check email address. 
-  *
-  * @param type $mail
-  */
+   * Check email subject.
+   *
+   * @param mixed $mail
+   *   Actual value.
+   */
   public static function checkEmail($mail) {
 
-    if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+    if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
       return TRUE;
     }
 
@@ -40,20 +43,26 @@ class MyTestForm extends \PHPUnit_Framework_TestCase{
   /**
    * Tests function that checks subject.
    *
-   * @param $subject
+   * @param mixed $subject
+   *   Actual value.
+   * @param bool $expected
+   *   Expected value.
    *
    * @dataProvider subjectDataProvider
    *
-   * @see MyTestForm::emailDataProvider()
+   * @see MyTestForm::subjectDataProvider()
    */
-  public function testSubjectEmail($subject, $expected) {
+  public function testSubject($subject, $expected) {
     $this->assertEquals($expected, MyTestForm::checkSubject($subject));
   }
 
   /**
    * Tests function that checks email.
    *
-   * @param $mail
+   * @param mixed $mail
+   *   Actual value.
+   * @param bool $expected
+   *   Expected value.
    *
    * @dataProvider emailDataProvider
    *
@@ -67,9 +76,10 @@ class MyTestForm extends \PHPUnit_Framework_TestCase{
    * Subject Data provider.
    *
    * @return array
+   *   Actual and expected value.
    *
    * @dataProvider subjectDataProvider
-   * 
+   *
    * @see MyTestForm::subjectDataProvider()
    */
   public function subjectDataProvider() {
@@ -88,9 +98,10 @@ class MyTestForm extends \PHPUnit_Framework_TestCase{
    * Email Data provider.
    *
    * @return array
+   *   Actual and expected value.
    *
    * @dataProvider emailDataProvider
-   * 
+   *
    * @see MyTestForm::emailDataProvider()
    */
   public function emailDataProvider() {
@@ -106,4 +117,5 @@ class MyTestForm extends \PHPUnit_Framework_TestCase{
     );
     return $data;
   }
+
 }
